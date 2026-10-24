@@ -1,0 +1,118 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+void menuCadastros (char cliente[10][50], char telefone[10][50], int totalClientes) {
+    int opcao;
+    int 
+    
+    do {
+    printf("\n=================================\n");
+    printf("\n=========== CADASTROS ===========\n");
+    printf("\n=================================\n");
+    printf("CADA CLIENTE CADASTRADO DEVE TER UM PET");
+    printf("[1] CADASTRAR\n[2] CONSULTAR TODOS OS CADASTROS\n[3] VOLTAR AO MENU\n");
+    printf("Digite a opção desejada: ");
+    scanf("%d", &opcao);
+    getchar();
+    
+    switch (opcao) {
+        case 1: {
+            printf("Digite quantos usuários vai cadastrar: ");
+            scanf("%d", totalClientes);
+            scanf("%d", totalPet);
+            
+            for (int c = 0; c < )
+        } case 2: {
+            
+        }
+        default {
+            printf("Digite um valor válido!")
+        }
+    } while ()     
+    }
+}
+
+//mostrar login
+int login() {
+    char senha[30];
+    char usuario[50];
+    
+    int tentativas = 3;
+    int valido = 0;
+    
+    do {
+    printf("\n============= LOGIN =============\n");
+    printf("Você tem: %d tentativas\n", tentativas);
+    printf("Usuário: \n");
+    fgets(usuario, 50, stdin);
+    usuario[strcspn(usuario, "\n")] = '\0';
+    
+    printf("Senha: \n");
+    fgets(senha, 30, stdin);
+    senha[strcspn(senha, "\n")] = '\0';
+    
+    if (strcmp(usuario, "Miguel Thiago") == 0 && strcmp(senha, "1234") == 0) {
+        valido = 1;
+        return valido;
+    } else {
+        tentativas -= 1;
+        system("clear");
+    } 
+    } while (tentativas > 0);
+    return valido;
+} 
+ 
+void menu () {
+    
+    char funcionario[] = "Miguel Thiago";
+    char cliente[10][50], telefone [10][50];
+    char pet[10][50], especie[10][50], raca[10][50];
+    int portePet[10];
+    int totalClientes = 0, totalPet = 0;
+    
+    //itens do comprovante
+    char itemNome[10][50];
+    int itemQtd[10];
+    int itemValor[10];
+    int totalItens = 0;
+    float total = 0;
+    
+    int opcao;
+    
+    do {
+        printf("\n=================================\n");
+        printf("\n====== PETSHOP AMIGO FIEL =======\n");
+        printf("\n=================================\n");
+        printf("[1] CADASTROS\n[2] SERVIÇOS\n[3] PRODUTOS\n[4] COMPROVANTE FINAL\n[5] SAIR\n");
+        printf("Digite a opção desejada: ");
+        scanf("%d", &opcao);
+        getchar();
+    
+        switch(opcao) {
+            case 1: menuCadastros(cliente, telefone, totalClientes); break;
+            case 2: break;
+            case 3: break;
+            case 4: break;
+            case 5: printf("Encerrando sistema..."); break;
+            default: {
+                printf("Digite um valor válido!");
+            }
+        }
+    } while (opcao != 5);
+} 
+
+int main() {
+    
+    if (login() == 0) {
+        printf("Limite de tentativas atingido, ENCERRANDO!");
+    } else {
+        system("clear");
+        menu();
+    }
+    
+    
+
+    return 0;
+}
