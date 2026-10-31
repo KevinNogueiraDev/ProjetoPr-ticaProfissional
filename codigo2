@@ -1,0 +1,157 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+//MOSTRAR LOGIN
+int login() {
+    char senha[30];
+    char usuario[50];
+    
+    int tentativas = 3;
+    int valido = 0;
+    
+    do {
+        printf("============= LOGIN =============\n");
+        printf("Você tem: %d tentativas\n", tentativas);
+        printf("Usuário: \n");
+        fgets(usuario, 50, stdin);
+        usuario[strcspn(usuario, "\n")] = '\0';
+    
+        printf("Senha: \n");
+        fgets(senha, 30, stdin);
+        senha[strcspn(senha, "\n")] = '\0';
+    
+        if (strcmp(usuario, "Miguel Thiago") == 0 && strcmp(senha, "1234") == 0) {
+            valido = 1;
+            return valido;
+        } else {
+            tentativas -= 1;
+            system("clear");
+        } 
+    } while (tentativas > 0);
+    return valido;
+} 
+ 
+void menu() {
+    
+    char funcionario[] = "Miguel Thiago";
+    char cliente[10][50], telefone[10][50];
+    char pet[10][5][200], especie[10][5][200], raca[10][5][200];
+    int portePet[10];
+    int totalClientes = 0, totalPet = 0, nrPet = 0;
+    
+    //itens do comprovante
+    char itemNome[10][50];
+    int itemQtd[10];
+    int itemValor[10];
+    int totalItens = 0;
+    float total = 0;
+    
+    int opcao;
+    
+    do {
+        printf("\n=================================\n");
+        printf("\n====== PETSHOP AMIGO FIEL =======\n");
+        printf("\n=================================\n");
+        printf("[1] Cadastros\n[2] Serviços\n[3] Produtos\n[4] Comprovante final\n[5] Sair\n");
+        printf("Digite a opção desejada: ");
+        scanf("%d", &opcao);
+        getchar();
+    
+        switch(opcao) {
+            case 1: {
+                do {
+                    printf("\n=================================\n");
+                    printf("\n=========== CADASTROS ===========\n");
+                    printf("\n=================================\n");
+                    printf("CADA CLIENTE CADASTRADO DEVE TER UM PET");
+                    printf("[1] Cadastrar\n[2] Consultar todos os cadastros\n[3] Voltar ao menu\n");
+                    printf("Digite a opção desejada: ");
+                    scanf("%d", &opcao);
+                    getchar();
+                        
+                    switch (opcao) {
+                        case 1: {
+                            printf("Digite quantos usuários vai cadastrar: ");
+                            scanf("%d", totalClientes);
+                            totalPet = totalClientes;
+                                
+                            for (int c = 0; c < totalClientes; c++) {
+                                printf("Digite o nome: ");
+                                fgets(cliente[c], 50, stdin);
+                                cliente[c][strcspn(cliente[c], "\n")] = '\0';
+                                    
+                                printf("Digite o telefone: ");
+                                fgets(telefone[c], 50, stdin);
+                                telefone[c][strcspn(telefone[c], "\n")] = '\0';
+                                    
+                                printf("Digite quantos PETS o cliente tem: ");
+                                scanf("%d", &nrPet);
+                                    
+                                for (int i = totalPet - 1; i < totalPet; i++) {
+                                    for (int j = 0; j < nrPet; j++) {
+                                        printf("Digite o nome do %d° PET: ", j + 1);
+                                        fgets(pet[i][j], 50, stdin);
+                                        pet[i][j][strcspn(pet[i][j], "\n")] = '\0';
+                                            
+                                        printf("Digite a espécie do PET: ");
+                                        fgets(especie[i][j], 50, stdin);
+                                        especie[i][j][strcspn(especie[i][j], "\n")] = '\0';
+                                            
+                                        printf("Digite a raça do PET: ");
+                                        fgets(raca[i][j], 50, stdin);
+                                        raca[i][j][strcspn(raca[i][j], "\n")] = '\0';
+                                    }
+                                }
+                            }
+                                break;
+                            } case 2: {
+                                for (int linha = 0; linha < totalClientes; linha++) {
+                                    
+                                }
+                                break;
+                            } case 3: {
+                                
+                                break;
+                            } default: {
+                                printf("Digite um valor válido!");
+                                system("clear");
+                            }
+                } while (opcao != 3); 
+                            break;
+                  
+                                
+            } case 2: {
+                
+                break;
+            } case 3: {
+            
+                break;
+            } case 4: {
+                
+                break;
+            } case 5: {
+                printf("Encerrando sistema..."); 
+                break;
+            }    
+            default: {
+                printf("Digite um valor válido!");
+            }
+        }
+    } while (opcao != 5);
+} 
+
+int main() {
+    
+    if (login() == 0) {
+        printf("Limite de tentativas atingido, ENCERRANDO!");
+    } else {
+        system("clear");
+        menu();
+    }
+    
+    
+
+    return 0;
+}
